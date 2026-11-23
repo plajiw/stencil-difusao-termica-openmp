@@ -1,4 +1,4 @@
-# Simulação de Propagação de Calor 2D (Stencil) — Entrega 1
+# Simulação de Propagação de Calor 2D (Stencil)
 
 **Disciplina:** Arquitetura de Computadores II  
 **Integrantes:** Guilherme Lopes Leão, João Vitor de Melo, Pablo Ribeiro, Gabriel Pereira
