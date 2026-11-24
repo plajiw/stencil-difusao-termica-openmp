@@ -100,15 +100,24 @@ double somar(const double *placa, int n)
 
 int main(int argc, char *argv[])
 {
-    if (argc != 3)
+    if (argc != 3 && argc != 4)
     {
-        fprintf(stderr, "Uso: %s <N> <T>\n", argv[0]);
+        fprintf(stderr, "Uso: %s <N> <T> [semente]\n", argv[0]);
         return 1;
     }
 
-    int n = atoi(argv[1]);                           /* tamanho da matriz N x N */
-    int iteracoes = atoi(argv[2]);                   /* quantas iteracoes rodar */
-    unsigned int semente = (unsigned int)time(NULL); /* seed muda a cada execucao */
+    int n = atoi(argv[1]);         /* tamanho da matriz N x N */
+    int iteracoes = atoi(argv[2]); /* quantas iteracoes rodar */
+
+    unsigned int semente;
+    if (argc == 4)
+    {
+        semente = (unsigned int)strtoul(argv[3], NULL, 10);
+    }
+    else
+    {
+        semente = (unsigned int)time(NULL);
+    }
 
     if (n < 3 || iteracoes < 1)
     {
@@ -126,12 +135,9 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    /* Gera os dados (fora do tempo). As duas matrizes comecam iguais,
-       assim as bordas ja ficam certas nas duas. */
     gerar_matriz(atual, n, semente);
     gerar_matriz(nova, n, semente);
 
-    /* Mede so a simulacao */
     double inicio = agora();
     for (int t = 0; t < iteracoes; t++)
     {

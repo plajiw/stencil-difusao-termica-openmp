@@ -13,17 +13,18 @@ gcc -O3 -Wall -Wextra main.c -o calor_seq
 
 ## Execução
 
-Formato: `./calor_seq <N> <T>`
+Formato: `./calor_seq <N> <T> [semente]`
 
 | Parâmetro | Significado                                                                                                           | Exemplo                     |
 | --------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------- |
 | `N`       | Tamanho da matriz: a grade tem N × N células (incluindo as bordas).                                                   | `1000` → matriz 1000 × 1000 |
 | `T`       | Número de iterações (passos de tempo) da simulação. Em cada passo, toda célula interna recebe a média dos 4 vizinhos. | `500` → 500 passos          |
+| `semente` | Opcional. Semente do gerador aleatório; a mesma semente reproduz a mesma matriz inicial e a mesma soma final. Se omitida, usa o relógio. | `42`                        |
 
 ```bash
-./calor_seq 1000 500
-./calor_seq 2000 1000
-./calor_seq 4000 2000
+./calor_seq 1000 500 42
+./calor_seq 2000 1000 42
+./calor_seq 4000 2000 42
 ```
 
 A saída mostra os parâmetros usados (incluindo a semente sorteada), o tempo da simulação em segundos e a soma final da matriz.
@@ -51,7 +52,9 @@ Nos cantos prevalecem as bordas superior e inferior: os cantos de cima valem 100
 
 ### Dados de entrada
 
-As células internas recebem valores inteiros pseudoaleatórios entre 0 e 100 (`rand() % 101`). A semente do gerador é obtida do relógio (`time(NULL)`), então cada execução começa com uma matriz inicial diferente. A semente usada é impressa na saída.
+As células internas recebem valores inteiros pseudoaleatórios entre 0 e 100 (`rand() % 101`). A semente do gerador pode ser passada como terceiro argumento para reproduzir uma execução; sem ela, é obtida do relógio (`time(NULL)`) e cada execução começa com uma matriz inicial diferente. A semente usada é impressa na saída.
+
+Os resultados registrados da versão sequencial estão em [`resultados/sequencial.csv`](resultados/sequencial.csv).
 
 ## O modelo: stencil de 4 vizinhos
 

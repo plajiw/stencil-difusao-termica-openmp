@@ -1,0 +1,4 @@
+versao,n,iteracoes,semente,tempo_s,soma_final,compilador,flags,cpu,data
+sequencial,1000,500,42,2.1811,49993567.929050,gcc 13.3.0,-O3,Intel Core i5-8265U @ 1.60GHz,2026-11-23
+sequencial,2000,1000,42,15.7590,199976345.114830,gcc 13.3.0,-O3,Intel Core i5-8265U @ 1.60GHz,2026-11-23
+sequencial,4000,2000,42,119.9594,799944707.176733,gcc 13.3.0,-O3,Intel Core i5-8265U @ 1.60GHz,2026-11-23
